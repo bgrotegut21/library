@@ -1,0 +1,85 @@
+* {
+    border:0;
+    box-sizing: 0;
+    margin:0;
+    padding:0;
+}
+
+.header {
+    background:rgb(255, 255, 255);
+    display: flex;
+    height:60px;
+    justify-content: center;
+    box-shadow: 1px 1px 4px rgb(175, 175, 175);
+    margin-bottom: 20px;
+
+}
+
+.bookShelf {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
+.libraryIcons{
+    display: flex;
+    align-items: center;
+}
+
+.dummyBookShelf {
+    background:rgb(229, 225, 225);
+    border-radius:10px;
+    width:300px;
+    height:300px;
+    display:flex;
+    flex-direction:column;
+    box-shadow: 1px 1px 4px rgb(125, 124, 124);
+    
+}
+
+.toolHolder {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.bookTools{
+    margin-right:5px;
+    width:75px;
+
+    display:flex;
+    justify-content: space-around;
+}
+
+.bookDescription {
+    word-wrap: break-word;
+    width:270px;
+    height:200px;
+
+}
+
+
+.bookStatsHolder {
+    justify-content:flex-end;
+    display:flex;
+
+}
+
+.bookStats {
+    flex-wrap: wrap;
+    display:flex;
+    justify-content: space-around;
+    width:175px;
+    margin-right: 5px;
+    margin-top:-5px;
+}
+
+.textHolder {
+    display:flex;
+
+    flex-direction:column;
+    align-items: center;
+    flex-wrap: wrap;
+}
