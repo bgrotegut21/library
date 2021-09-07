@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Kaushan+Script&display=swap');
+        </style>
+
     <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
     <div class = "header">
@@ -55,25 +60,106 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class = "addShelf">
-        <h2>X</h2>
-        <h2 class = "title">Title</h2>
-        <input class = "titleText" type="text">
-        <h2 class = "author"></h2>
-        <input class = "authorText" type="text">
-        <h2 class = "description">Description</h2>
-        <textarea class = "discriptionText" cols="30" rows="10"></textarea>
-        <h2 class = "totalPages"> Total Pages</h2>
-        <div class = "readBook">
-            <h2>read</h2>
-            <img src="images/redFalse.svg" alt="user toggles read and false button">
+
+        <div class = "dummyBookShelf">
+            <div class = "toolHolder">
+                <div class = "bookTools">
+                    <img class = "deleteBook" src="images/delete.svg" alt="delete image">
+                    <img class = "editBook" src="images/edit.svg" alt="edit image">
+                </div>
+            </div>
+            <div class = "textHolder">
+                <h2 class = "bookTitle">Diary of a Kid</h2>
+                <h3 class = "author">by Jeff Kinney</h3>
+                <p class = "bookDescription">This book is about kid who eat hotdogs and burgers that delicious epic awesome supet time</p>
+            </div>
+            <div class = "bookStatsHolder">
+                <div class = "bookStats">
+                    <h3 class = "totalPages">220 total pages</h3>
+                    <img class = "hasRead" src="images/redFalse.svg" alt="book has been read" width = "30" height = "30">
+                </div>
+            </div>
         </div>
-    
+
+        <div class = "dummyBookShelf">
+            <div class = "toolHolder">
+                <div class = "bookTools">
+                    <img class = "deleteBook" src="images/delete.svg" alt="delete image">
+                    <img class = "editBook" src="images/edit.svg" alt="edit image">
+                </div>
+            </div>
+            <div class = "textHolder">
+                <h2 class = "bookTitle">Diary of a Kid</h2>
+                <h3 class = "author">by Jeff Kinney</h3>
+                <p class = "bookDescription">This book is about kid who eat hotdogs and burgers that delicious epic awesome supet time</p>
+            </div>
+            <div class = "bookStatsHolder">
+                <div class = "bookStats">
+                    <h3 class = "totalPages">220 total pages</h3>
+                    <img class = "hasRead" src="images/redFalse.svg" alt="book has been read" width = "30" height = "30">
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
+    
+        
+
+
+
+    </div>
+
+    <div class = "addShelf">
+        <h2 class = "exit">X</h2>
+        <div class = "shelfInfo">
+            <div class = "shelfElements">
+                <h2 class = "title">Title</h2>
+
+                <div class = "titleTextHolder">
+                    <input class = "titleText" type="text">
+                </div>
+               
+                <h2 class = "author">Author</h2>
+            
+                <div class = "authorTextHolder">
+                    <input class = "authorText" type="text">
+
+                </div>
+
+
+                <h2 class = "description">Description</h2>
+
+                <div class = "descriptionTextHolder">
+                    <textarea class = "descriptionText" cols="30" rows="11"></textarea>
+
+                </div>
+              
+                <h2 class = "totalPages"> Total Pages</h2>
+                <div class = "textPageHolder">
+                    <input class = "pagesText" type="text">
+
+                </div>
+             
+    
+                <div class = "readStats">
+                    <h2>read</h2>
+                    <img src="images/redFalse.svg" alt="user toggles read and false button" width ="30" height = "30">
+                </div>
+                <div class = "readBook">
+             
+            </div>
+
+            
+        </div>
+
+       </div>
 
 
     <div class = "addBook">+</div>
+
+
 </body>
 
 </html>

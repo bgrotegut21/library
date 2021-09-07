@@ -12,14 +12,19 @@
     justify-content: center;
     box-shadow: 1px 1px 4px rgb(175, 175, 175);
     margin-bottom: 20px;
+    font-family: cursive;
+    
 
 }
 
+.libraryTitle {
+    margin-left: 6px;
+}
 .bookShelf {
 
     display: flex;
-    flex-direction: wrap;
-    justify-content:space-around;
+    flex-wrap: wrap;
+    justify-content:center;
 
 }
 
@@ -38,6 +43,11 @@
     display:flex;
     flex-direction:column;
     box-shadow: 1px 1px 4px rgb(125, 124, 124);
+    margin-right:15px;
+    margin-bottom: 20px;
+    font-size: small;
+    font-family: 'Kaisei HarunoUmi', serif;
+
     
 }
 
@@ -51,7 +61,7 @@
     width:75px;
 
     display:flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .bookDescription {
@@ -60,6 +70,7 @@
     height:200px;
 
 }
+
 
 
 .bookStatsHolder {
@@ -85,6 +96,105 @@
     flex-wrap: wrap;
 }
 
-.addShelf {
-    display: none;
+
+
+.addBook {
+    background:rgb(83, 103, 239);
+    color:white;
+    width:100px;
+    height:100px;
+    position:fixed;
+    top:85%;
+    left:76%;
+    border-radius:50%;
+    line-height:100px;
+    text-align: center;
+    font-size:40px;
+    box-shadow: 1px 1px 8px rgb(96, 96, 96);
 }
+
+
+
+
+.addShelf {
+    background:red;
+    width:400px;
+    height:500px;
+    position:fixed;
+    top:20%;
+    border-radius: 20px;
+    left: 10%;
+
+}
+
+.exit {
+    position:relative;
+    left:85%;
+    margin-top:10px;
+}
+
+
+.shelfInfo {
+    background:blue;
+    
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shelfElements {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:350px;
+    height: 450px;
+    background:green;
+}
+
+.titleTextHolder, .authorTextHolder, .textPageHolder {
+    background:white;
+    height:30px;
+    width:200px;
+    border-radius: 20px;
+}
+
+.descriptionTextHolder {
+    background:white;
+    width:300px;
+    height:200px;
+    border-radius:20px;
+}
+
+.descriptionText {
+    position:relative;
+    resize:none;
+    top:5%;
+    left:6%;
+    
+}
+
+.titleText, .authorText, .pagesText {
+    position:relative;
+    top:20%;
+    left:10%;
+    width:160px;
+}
+
+.readStats {
+
+    width:100px;
+    display:flex;
+    justify-content:space-around;
+    position:relative;
+    top:3%;
+    left:30%;
+}
+
+
+@media only screen and (min-width: 1100px) {
+    .addBook {
+        position:fixed;
+        left:50%;
+
+    }
+  }
