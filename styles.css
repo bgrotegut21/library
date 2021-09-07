@@ -18,7 +18,8 @@
 .bookShelf {
 
     display: flex;
-    justify-content: center;
+    flex-direction: wrap;
+    justify-content:space-around;
 
 }
 
@@ -30,7 +31,7 @@
 }
 
 .dummyBookShelf {
-    background:rgb(229, 225, 225);
+    background:rgb(231, 228, 228);
     border-radius:10px;
     width:300px;
     height:300px;
@@ -82,4 +83,8 @@
     flex-direction:column;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.addShelf {
+    display: none;
 }
