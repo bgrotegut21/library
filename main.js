@@ -64,7 +64,10 @@ doneButton.addEventListener("click", () => {
     
 })
 
-function createNewBook (book,hasRead){
+
+
+
+function createNewBook (book,bookRead){
     let bookDiv = document.createElement("div");
     bookDiv.setAttribute("class","book");
 
@@ -76,9 +79,13 @@ function createNewBook (book,hasRead){
 
     let deleteBook = document.createElement("div");
     deleteBook.setAttribute("class", "deleteBook");
+    deleteBook.setAttribute("src","images/delete.svg");
+    deletBook.setAttribute("alt", "delete image");
 
     let editBook = document.createElement("div");
     editBook.setAttribute("class", "editBook");
+    editBook.setAttribute("src","images/edit.svg")
+    editBook.setAttribute("alt", "edit image")
 
     let textHolder = document.createElement("div");
     textHolder.setAttribute("class", "textHolder");
@@ -104,6 +111,13 @@ function createNewBook (book,hasRead){
     let totalPages = document.createElement("div");
     totalPages.setAttribute("class", "totalPages");
     totalPages.textContent = `${book.totalPages} total pages`;
+
+    let hasRead = document.createElement("div");
+    hasRead.setAttribute("class", "hasRead");
+    if(bookRead) {
+        hasRead.setAttribute("src","images/redFalse.svg");
+
+    }
 
 
 
