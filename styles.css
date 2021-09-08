@@ -35,7 +35,17 @@
     align-items: center;
 }
 
-.dummyBookShelf {
+
+.doneButton:hover {
+    cursor: pointer;
+}
+
+.exit {
+    cursor: pointer;
+}
+
+
+.book {
     background:rgb(231, 228, 228);
     border-radius:10px;
     width:300px;
@@ -112,26 +122,46 @@
     font-size:40px;
     box-shadow: 1px 1px 8px rgb(96, 96, 96);
 }
-
+.hasRead:hover {
+    cursor: pointer;
+}
+.bookTools img:hover {
+    cursor: pointer;
+}
 
 
 
 .addShelf {
-    background:red;
+    display:none;
+    background:rgb(219, 219, 219);
+    z-index: 100;
+
     width:400px;
     height:500px;
     position:fixed;
     top:20%;
     border-radius: 20px;
     left: 10%;
+    font-family: 'Kaisei HarunoUmi', serif;
+    font-size: small;
+
 
 }
 
+.bookRead {
+    cursor: pointer;
+}
+
+
+.addBook {
+    cursor: pointer;
+}
 .exit {
     position:relative;
     left:90%;
     margin-top:10px;
 }
+
 
 
 .shelfInfo {
@@ -141,6 +171,8 @@
     flex-direction: column;
     align-items: center;
     border-radius:20px;
+
+
 }
 
 .shelfElements {
@@ -149,7 +181,6 @@
     align-items: center;
     width:350px;
     height: 450px;
-    background:green;
 }
 
 .titleTextHolder, .authorTextHolder, .textPageHolder {
@@ -157,13 +188,16 @@
     height:30px;
     width:200px;
     border-radius: 20px;
+    box-shadow: 1px 1px 8px rgb(127, 127, 127);
 }
 
 input[type = "text"]{
 
     font-family: 'Kaisei HarunoUmi', serif;
 }
-
+input {
+    outline:none;
+}
 .descriptionText {
     font-family: 'Kaisei HarunoUmi', serif;
 }
@@ -175,6 +209,7 @@ input[type = "text"]{
     width:300px;
     height:200px;
     border-radius:20px;
+    box-shadow: 1px 1px 8px rgb(127, 127, 127);
 }
 
 .descriptionText {
@@ -203,13 +238,32 @@ input[type = "text"]{
 }
 
 .doneButton {
-    background:red;
+    background:rgb(83, 103, 239);
+    color:white;
     width:100px;
     height:30px;
     margin-top:20px;
     border-radius: 20px;
+    box-shadow: 1px 1px 8px rgb(127, 127, 127);
+;
 
 }
+
+
+
+.darkenPage {
+    display:none;
+    position: absolute;;
+    background: black;
+    z-index:90;
+    width:100%;
+    height:100%;
+    filter:alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+
+
 
 
 @media only screen and (min-width: 1100px) {
@@ -217,5 +271,18 @@ input[type = "text"]{
         position:fixed;
         left:50%;
 
+    }
+  }
+
+
+@media only screen and (min-width: 750px) {
+    .addShelf {
+        left:30%;
+    }
+  }
+
+  @media only screen and (min-width: 1400px) {
+    .addShelf {
+        left:40%;
     }
   }
