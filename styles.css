@@ -69,13 +69,13 @@
 .bookTools{
     margin-right:5px;
     width:75px;
-
     display:flex;
     justify-content: space-evenly;
 }
 
 .bookDescription {
     word-wrap: break-word;
+
     width:270px;
     height:200px;
 
@@ -84,6 +84,7 @@
 
 
 .bookStatsHolder {
+    
     justify-content:flex-end;
     display:flex;
 
@@ -100,7 +101,7 @@
 
 .textHolder {
     display:flex;
-
+    
     flex-direction:column;
     align-items: center;
     flex-wrap: wrap;
@@ -199,6 +200,8 @@ input {
     outline:none;
 }
 .descriptionText {
+    outline:none;
+
     font-family: 'Kaisei HarunoUmi', serif;
 }
 
@@ -213,6 +216,7 @@ input {
 }
 
 .descriptionText {
+
     position:relative;
     resize:none;
     top:5%;
