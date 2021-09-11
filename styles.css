@@ -109,6 +109,7 @@
 
 
 
+
 .addBook {
     background:rgb(83, 103, 239);
     color:white;
@@ -174,6 +175,10 @@
     border-radius:20px;
 
 
+}
+
+.errorMessage {
+    color:rgb(0, 18, 209);
 }
 
 .shelfElements {
@@ -269,7 +274,6 @@ input {
 
 
 
-
 @media only screen and (min-width: 1100px) {
     .addBook {
         position:fixed;
@@ -290,3 +294,129 @@ input {
         left:40%;
     }
   }
+
+  @media only screen and (min-width: 1400px) {
+    .addShelf {
+        left:40%;
+    }
+  }
+
+  @media only screen and (max-width: 450px) {
+    .addShelf {
+        width:320px;
+
+    }
+    .addBook {
+        left:70%;
+    }
+  }
+
+  @media only screen and (max-width: 360px) {
+    .addShelf {
+        width:300px;
+        left:3%;
+        top:8%;
+
+    }
+
+
+
+
+
+
+    .addBook {
+        width:50px;
+        height:50px;
+        line-height: 50px;
+        left:76%;
+        font-size: x-large;
+    }
+    .book {
+        width: 200px;
+        height:200px;
+    }
+
+    .bookTitle {
+        font-size: 1em;
+    }
+
+    .bookStats {
+        width: 100px;
+        align-items: center;
+    }
+
+    .author {
+        font-size:0.75em;
+    }
+    .totalPages {
+        font-size: 0.5em;
+    }
+    .hasRead {
+        width:15px;
+        height:15px;
+    }
+
+    .bookDescription {
+        width:180px;
+        height:120px;
+        font-size: 8px;
+    }
+
+    .readStats {
+        margin-right:50px;
+    }
+    .deleteBook, .editBook {
+        width:15px;
+        height:15px;
+    }
+
+    .bookTools {
+        width:40px;
+        
+
+    }
+
+  }
+
+@media only screen and (max-width:315px){
+    .addShelf {
+        width:200px;
+        left:16%;
+        top:10%;
+    
+    }
+    .descriptionTextHolder {
+        width:200px;
+
+    }
+    .descriptionText {
+
+        width: 14em;
+        height:13em;
+        font-size: 12px;
+
+    }
+    .readStats {
+        margin-right:205px;
+    }
+    .errorMessage {
+        font-size: 9px;
+    }
+}
+
+
+@media only screen and (max-width:300px){
+    .addShelf {
+        left:10%;
+        top:10%;
+    
+    }
+}
+
+@media only screen and (max-width:225px){
+    .addShelf {
+        left:0%;
+        top:10%;
+    
+    }
+}

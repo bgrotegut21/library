@@ -10,10 +10,22 @@ let bookRead = document.querySelector(".bookRead");
 let addBook = document.querySelector(".addBook");
 let exit = document.querySelector(".exit");
 let hasBookRead = document.querySelector(".hasRead");
+let errorMessage = document.querySelector(".errorMessage")
 
 let books = [];
-let editMode = false;
+let editBook = {
+    editMode: false,
+    book:"",
+}
 let bookHasBeenRead = false;
+
+//max description length - 390
+//max title description - 26
+//max author length - 22
+//randomNumber length = 6
+
+
+
 
 function Book(title,author,description,totalPages,bookRead){
     this.title = title;
@@ -42,9 +54,9 @@ Book.prototype.addElements = function(elements,readElement,trash,edit){
     this.addKeyEvents(readElement,trash,edit)
 }
 
-Book.prototype.addTextElements = function(titleElement, authorELement,descriptionElement, pageElement){
+Book.prototype.addTextElements = function(titleElement, authorElement,descriptionElement, pageElement){
     this.titleElement = titleElement;
-    this.authorElement = authorELement;
+    this.authorElement = authorElement;
     this.descriptionElement = descriptionElement;
     this.pageElement = pageElement;
 }
@@ -62,19 +74,37 @@ Book.prototype.trashBook = function (){
 }
 
 Book.prototype.editBook = function () {
-    console.log("editity")
-    editMode = true;
+    editBook.editMode = true;
+    editBook.book = this;
     this.checkEditor()
     envokeEditor();
 }
 
+Book.prototype.updateValues = function(title,author,description,pagesValue,bookRead){
+    this.title = title;
+    this.author = author; 
+    this.description = description; 
+    this.totalPages = pagesValue;
+    this.bookRead = bookRead;
+}
+
+Book.prototype.updateText = function (){
+    this.titleElement.textContent = this.title;
+    console.log(this.authorElement, "current author element")
+    this.authorElement.textContent = this.author;
+    this.descriptionElement.textContent = this.description;
+    this.pageElement.textContent = this.totalPages;
+    this.updateBookRead();
+
+}
 
 
 
 
 Book.prototype.checkEditor = function () {
     titleText.value = this.title;
-    authorText.value  = this.author.replace("by","");
+    authorText.value  = this.author.replace("by","").trim();
+    console.log(authorText.value, "authorText value")
     descriptionText.value = this.description;
 
     pagesText.value = this.totalPages.match(/\d+/)[0];
@@ -85,6 +115,11 @@ Book.prototype.checkEditor = function () {
 
 }
 
+Book.prototype.updateBookRead = function(){
+    if (this.bookRead) this.readElement.setAttribute("src", "images/redTrue.svg");
+    else this.readElement.setAttribute("src", "images/redFalse.svg");
+}
+
 Book.prototype.checkBookRead = function(){
     if (this.bookRead){
         this.bookRead = false;
@@ -93,13 +128,15 @@ Book.prototype.checkBookRead = function(){
     } else {
         this.bookRead = true;
         this.readElement.setAttribute("src","images/redTrue.svg")
-    }
+    } 
 }
 
 
 function assignBookRead (bookisRead){
-    if(bookisRead) hasBookRead.setAttribute("src","images/redTrue.svg");
-    else hasBookRead.setAttribute("src", "images/redFalse.svg")
+    console.log(bookisRead, "book is currently read")
+    console.log(bookisRead, "book is currently read")
+    if(bookisRead) bookRead.setAttribute("src","images/redTrue.svg")
+    else bookRead.setAttribute("src","images/redFalse.svg");
     bookHasBeenRead = bookisRead;
 }
 
@@ -126,9 +163,6 @@ function deleteBook(){
 function envokeEditor (){
     darkenPage.style.display = "block";
     addShelf.style.display = "block";
-    bookHasBeenRead = false;
-    bookRead.src = "images/redFalse.svg"
-
 }
 
 
@@ -152,15 +186,12 @@ exit.addEventListener("click", () => {
 
 })
 
-bookRead.addEventListener("click", () => {
-    if (bookHasBeenRead) {
-        bookHasBeenRead = false;
-        bookRead.setAttribute("src","images/redFalse.svg");
-    } else {
-        bookHasBeenRead = true;
-        bookRead.setAttribute("src","images/redTrue.svg")
-    }
-})
+function checkWordLength(title,author,description){
+    if (title.length > 26) return {bool:true, text:"title", length: "26"};
+    if (author.length > 22) return {bool:true, text: "author", length: "22"}; 
+    if (description.length > 390) return {bool:true, text: "descripton", length: "390"}
+    return {bool:false}
+}
 
 function readElementEvent(book){
     if (book.readElement){
@@ -172,6 +203,32 @@ function readElementEvent(book){
     }
 }
 
+
+bookRead.addEventListener("click", () => {
+
+    if (bookHasBeenRead){
+        bookHasBeenRead = false;
+        bookRead.setAttribute("src","images/redFalse.svg")
+    } else {
+        bookHasBeenRead = true;
+        bookRead.setAttribute("src","images/redTrue.svg")
+    }
+})
+
+function editBookContents (book,titleValue,authorValue, decriptionValue, pagesValue, bookHasBeenRead){
+    book.updateValues(titleValue,authorValue,decriptionValue,pagesValue,bookHasBeenRead);
+    book.updateText();
+    editBook.editMode = false;
+    editBook.book = "";
+}
+
+function displayErrorMessage(message){
+    setTimeout(() => {
+        errorMessage.textContent = "";
+    },2000)
+    errorMessage.textContent = message;
+    
+}
 
 
 doneButton.addEventListener("click", () => {
@@ -185,13 +242,27 @@ doneButton.addEventListener("click", () => {
 
     if (titleValue.length ==0) titleValue = "Title"
 
-
     if (String(pagesValue).length == 0) pagesValue = "0 total pages";
-    else pagesValue = `${pageValue} total pages`
-    let book = new Book(titleValue, authorValue, descriptionValue, pagesValue,bookHasBeenRead);
-    createNewBook(book, bookHasBeenRead)
-    books.push(book);
-    exitPage()
+    else pagesValue = `${pagesValue} total pages`
+
+
+    let wordLength = checkWordLength(titleValue,authorValue,descriptionValue);
+
+
+    if (wordLength.bool){
+        displayErrorMessage(`⚠️${wordLength.text} can't be over ${wordLength.length} character`)
+    }else if (editBook.editMode){
+      
+        editBookContents(editBook.book,titleValue,authorValue,descriptionValue,pagesValue,bookHasBeenRead)
+
+    } else {
+        console.log("creating brand new book")
+        let book = new Book(titleValue, authorValue, descriptionValue, pagesValue,bookHasBeenRead);
+        createNewBook(book, bookHasBeenRead)
+        books.push(book);
+    }
+    if(!wordLength.bool) exitPage();
+
 })
 
 
@@ -217,7 +288,6 @@ function organizeBook (bookDiv,toolHolder, bookTools, deleteBook, editBook, text
         bookStats.appendChild(hasRead);
 
     }
-
 
 
 
@@ -281,7 +351,7 @@ function createNewBook (book,bookRead){
     
     organizeBook(bookDiv,toolHolder,bookTools,deleteBook,editBook,textHolder,bookTools, deleteBook, editBook, textHolder, bookTitle, author, bookDescription, bookStatsHolder, bookStats, totalPages, hasRead,)
     book.addElements(bookDiv,hasRead,deleteBook,editBook)
-    book.addTextElements(bookTitle,author.bookDescription,totalPages)
+    book.addTextElements(bookTitle,author,bookDescription,totalPages)
     console.log(book)
 
 }
