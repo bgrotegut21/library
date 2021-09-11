@@ -9,6 +9,7 @@ let doneButton = document.querySelector(".doneButton");
 let bookRead = document.querySelector(".bookRead");
 let addBook = document.querySelector(".addBook");
 let exit = document.querySelector(".exit");
+let hasBookRead = document.querySelector(".hasRead");
 
 let books = [];
 let editMode = false;
@@ -22,10 +23,15 @@ function Book(title,author,description,totalPages,bookRead){
     this.description = description;
     this.totalPages = totalPages;
     this.bookRead = bookRead;
-    this.elements = "none";
-    this.readElement = "none";
-    this.trash = "none";
-    this.edit = "none"
+    this.elements;
+    this.readElement;
+    this.trash;
+    this.edit;
+
+    this.titleElement;
+    this.authorElement;
+    this.descriptionElement;
+    this.pageElement;
 }
 
 Book.prototype.addElements = function(elements,readElement,trash,edit){
@@ -33,12 +39,20 @@ Book.prototype.addElements = function(elements,readElement,trash,edit){
     this.readElement = readElement;
     this.trash = trash;
     this.edit = edit;
-    this.addKeyEvents(readElement,trash)
+    this.addKeyEvents(readElement,trash,edit)
+}
+
+Book.prototype.addTextElements = function(titleElement, authorELement,descriptionElement, pageElement){
+    this.titleElement = titleElement;
+    this.authorElement = authorELement;
+    this.descriptionElement = descriptionElement;
+    this.pageElement = pageElement;
 }
 
 Book.prototype.addKeyEvents = function (readElement,trash,edit){
     readElement.addEventListener("click", () => {this.checkBookRead()});
     trash.addEventListener("click", () => {this.trashBook()});
+    edit.addEventListener("click", () => {this.editBook()});
 }
 
 Book.prototype.trashBook = function (){
@@ -48,26 +62,27 @@ Book.prototype.trashBook = function (){
 }
 
 Book.prototype.editBook = function () {
+    console.log("editity")
     editMode = true;
     this.checkEditor()
     envokeEditor();
-
 }
+
+
+
+
 
 Book.prototype.checkEditor = function () {
     titleText.value = this.title;
-    authorText.value  == this.author.replace("by","");
+    authorText.value  = this.author.replace("by","");
+    descriptionText.value = this.description;
+
+    pagesText.value = this.totalPages.match(/\d+/)[0];
+    assignBookRead(this.bookRead)
+
+
     
 
-}
-
-function deleteBook(){
-    let tempBooks = books;
-    books = [];    
-    tempBooks.map(book => {
-        if (!book.deleteBook) books.push(book); 
-
-    })
 }
 
 Book.prototype.checkBookRead = function(){
@@ -80,6 +95,33 @@ Book.prototype.checkBookRead = function(){
         this.readElement.setAttribute("src","images/redTrue.svg")
     }
 }
+
+
+function assignBookRead (bookisRead){
+    if(bookisRead) hasBookRead.setAttribute("src","images/redTrue.svg");
+    else hasBookRead.setAttribute("src", "images/redFalse.svg")
+    bookHasBeenRead = bookisRead;
+}
+
+function resetValues(){
+    titleText.value = "";
+    descriptionText.value = "";
+    pagesText.value = "";
+    authorText.value ="";
+
+
+}
+
+function deleteBook(){
+    let tempBooks = books;
+    books = [];    
+    tempBooks.map(book => {
+        if (!book.deleteBook) books.push(book); 
+
+    })
+}
+
+
 
 function envokeEditor (){
     darkenPage.style.display = "block";
@@ -95,17 +137,29 @@ addBook.addEventListener("click", () => {
     addShelf.style.display = "block";
     bookHasBeenRead = false;
     bookRead.src = "images/redFalse.svg"
+    resetValues();
 })
 
 function exitPage(){
     darkenPage.style.display = "none";
     addShelf.style.display = "none";
+
     
 }
 
 exit.addEventListener("click", () => {
     exitPage();
 
+})
+
+bookRead.addEventListener("click", () => {
+    if (bookHasBeenRead) {
+        bookHasBeenRead = false;
+        bookRead.setAttribute("src","images/redFalse.svg");
+    } else {
+        bookHasBeenRead = true;
+        bookRead.setAttribute("src","images/redTrue.svg")
+    }
 })
 
 function readElementEvent(book){
@@ -227,6 +281,7 @@ function createNewBook (book,bookRead){
     
     organizeBook(bookDiv,toolHolder,bookTools,deleteBook,editBook,textHolder,bookTools, deleteBook, editBook, textHolder, bookTitle, author, bookDescription, bookStatsHolder, bookStats, totalPages, hasRead,)
     book.addElements(bookDiv,hasRead,deleteBook,editBook)
+    book.addTextElements(bookTitle,author.bookDescription,totalPages)
     console.log(book)
 
 }
