@@ -19,14 +19,6 @@ let editBook = {
 }
 let bookHasBeenRead = false;
 
-//max description length - 390
-//max title description - 26
-//max author length - 22
-//randomNumber length = 6
-
-
-
-
 function Book(title,author,description,totalPages,bookRead){
     this.title = title;
     this.author = author;
@@ -90,29 +82,19 @@ Book.prototype.updateValues = function(title,author,description,pagesValue,bookR
 
 Book.prototype.updateText = function (){
     this.titleElement.textContent = this.title;
-    console.log(this.authorElement, "current author element")
     this.authorElement.textContent = this.author;
     this.descriptionElement.textContent = this.description;
     this.pageElement.textContent = this.totalPages;
     this.updateBookRead();
-
 }
-
-
 
 
 Book.prototype.checkEditor = function () {
     titleText.value = this.title;
     authorText.value  = this.author.replace("by","").trim();
-    console.log(authorText.value, "authorText value")
     descriptionText.value = this.description;
-
     pagesText.value = this.totalPages.match(/\d+/)[0];
     assignBookRead(this.bookRead)
-
-
-    
-
 }
 
 Book.prototype.updateBookRead = function(){
@@ -123,7 +105,6 @@ Book.prototype.updateBookRead = function(){
 Book.prototype.checkBookRead = function(){
     if (this.bookRead){
         this.bookRead = false;
-        console.log(this.readElement, "read Element")
         this.readElement.setAttribute("src", "images/redFalse.svg")
     } else {
         this.bookRead = true;
@@ -133,8 +114,6 @@ Book.prototype.checkBookRead = function(){
 
 
 function assignBookRead (bookisRead){
-    console.log(bookisRead, "book is currently read")
-    console.log(bookisRead, "book is currently read")
     if(bookisRead) bookRead.setAttribute("src","images/redTrue.svg")
     else bookRead.setAttribute("src","images/redFalse.svg");
     bookHasBeenRead = bookisRead;
@@ -145,8 +124,6 @@ function resetValues(){
     descriptionText.value = "";
     pagesText.value = "";
     authorText.value ="";
-
-
 }
 
 function deleteBook(){
@@ -156,15 +133,13 @@ function deleteBook(){
         if (!book.deleteBook) books.push(book); 
 
     })
+    storeData(books);
 }
-
-
 
 function envokeEditor (){
     darkenPage.style.display = "block";
     addShelf.style.display = "block";
 }
-
 
 addBook.addEventListener("click", () => {
     darkenPage.style.display = "block";
@@ -177,8 +152,6 @@ addBook.addEventListener("click", () => {
 function exitPage(){
     darkenPage.style.display = "none";
     addShelf.style.display = "none";
-
-    
 }
 
 exit.addEventListener("click", () => {
@@ -205,7 +178,6 @@ function readElementEvent(book){
 
 
 bookRead.addEventListener("click", () => {
-
     if (bookHasBeenRead){
         bookHasBeenRead = false;
         bookRead.setAttribute("src","images/redFalse.svg")
@@ -227,7 +199,6 @@ function displayErrorMessage(message){
         errorMessage.textContent = "";
     },2000)
     errorMessage.textContent = message;
-    
 }
 
 
@@ -239,33 +210,61 @@ doneButton.addEventListener("click", () => {
 
     if (authorValue.length != 0) authorValue = `by ${authorValue}`
     else authorValue = "by Author ";
-
     if (titleValue.length ==0) titleValue = "Title"
-
+    if (String(pagesValue).length > 6) pagesValue = Number(pagesValue).toExponential(1)
     if (String(pagesValue).length == 0) pagesValue = "0 total pages";
     else pagesValue = `${pagesValue} total pages`
-
-
     let wordLength = checkWordLength(titleValue,authorValue,descriptionValue);
-
-
     if (wordLength.bool){
         displayErrorMessage(`⚠️${wordLength.text} can't be over ${wordLength.length} character`)
     }else if (editBook.editMode){
-      
         editBookContents(editBook.book,titleValue,authorValue,descriptionValue,pagesValue,bookHasBeenRead)
-
     } else {
-        console.log("creating brand new book")
         let book = new Book(titleValue, authorValue, descriptionValue, pagesValue,bookHasBeenRead);
         createNewBook(book, bookHasBeenRead)
         books.push(book);
     }
+    storeData(books);
     if(!wordLength.bool) exitPage();
 
 })
+window.addEventListener("load", () => {retrieveData()})
+
+function storeData(group){
+    let storageGroup = [];
+    let bookObject = {};
+
+    group.map(book => {
+        bookObject.title = book.title;
+        bookObject.author = book.author;
+        bookObject.description = book.description;
+        bookObject.totalPages = book.totalPages;
+        bookObject.bookRead = book.bookRead;
+        storageGroup.push(bookObject);
+        bookObject = {};
+    })
+    addData(storageGroup);
+}
+
+function retrieveData(){
+    let bookJsonObjects = localStorage.getItem("bookGroup");
+    let bookObjects = JSON.parse(bookJsonObjects);
+        bookObjects.map(book => {
+            let newBook = new Book(book.title, book.author, book.description, book.totalPages, book.bookRead);
+            createNewBook(newBook,book.bookRead);
+            books.push(newBook);
+        })
+    }
 
 
+
+function addData(storageGroup){
+    if(typeof(Storage) !== "undefined"){
+        localStorage.setItem("bookGroup",JSON.stringify(storageGroup));
+    } else {
+        return;
+    }
+}
 
 
 function organizeBook (bookDiv,toolHolder, bookTools, deleteBook, editBook, textHolder
@@ -286,10 +285,7 @@ function organizeBook (bookDiv,toolHolder, bookTools, deleteBook, editBook, text
         bookStatsHolder.appendChild(bookStats);
         bookStats.appendChild(totalPages);
         bookStats.appendChild(hasRead);
-
     }
-
-
 
 function createNewBook (book,bookRead){
     let bookDiv = document.createElement("div");
@@ -316,7 +312,6 @@ function createNewBook (book,bookRead){
 
     let bookTitle = document.createElement("h2");
     bookTitle.setAttribute("class", "bookTitle");
-    console.log(book.title, "current book title")
     bookTitle.textContent = book.title;
 
     let author = document.createElement("h3");
@@ -352,6 +347,4 @@ function createNewBook (book,bookRead){
     organizeBook(bookDiv,toolHolder,bookTools,deleteBook,editBook,textHolder,bookTools, deleteBook, editBook, textHolder, bookTitle, author, bookDescription, bookStatsHolder, bookStats, totalPages, hasRead,)
     book.addElements(bookDiv,hasRead,deleteBook,editBook)
     book.addTextElements(bookTitle,author,bookDescription,totalPages)
-    console.log(book)
-
 }
