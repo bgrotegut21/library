@@ -13,22 +13,17 @@
     box-shadow: 1px 1px 4px rgb(175, 175, 175);
     margin-bottom: 20px;
     font-family: cursive;
-    
-
 }
 
 .libraryTitle {
     margin-left: 6px;
 }
-.bookShelf {
 
+.bookShelf {
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
-
 }
-
-
 
 .libraryIcons{
     display: flex;
@@ -44,7 +39,6 @@
     cursor: pointer;
 }
 
-
 .book {
     background:rgb(231, 228, 228);
     border-radius:10px;
@@ -56,9 +50,7 @@
     margin-right:15px;
     margin-bottom: 20px;
     font-size: small;
-    font-family: 'Kaisei HarunoUmi', serif;
-
-    
+    font-family: 'Kaisei HarunoUmi', serif;    
 }
 
 .toolHolder {
@@ -75,19 +67,13 @@
 
 .bookDescription {
     word-wrap: break-word;
-
     width:270px;
     height:200px;
-
 }
 
-
-
 .bookStatsHolder {
-    
     justify-content:flex-end;
     display:flex;
-
 }
 
 .bookStats {
@@ -101,14 +87,10 @@
 
 .textHolder {
     display:flex;
-    
     flex-direction:column;
     align-items: center;
     flex-wrap: wrap;
 }
-
-
-
 
 .addBook {
     background:rgb(83, 103, 239);
@@ -124,9 +106,11 @@
     font-size:40px;
     box-shadow: 1px 1px 8px rgb(96, 96, 96);
 }
+
 .hasRead:hover {
     cursor: pointer;
 }
+
 .bookTools img:hover {
     cursor: pointer;
 }
@@ -137,7 +121,6 @@
     display:none;
     background:rgb(219, 219, 219);
     z-index: 100;
-
     width:400px;
     height:500px;
     position:fixed;
@@ -146,35 +129,27 @@
     left: 10%;
     font-family: 'Kaisei HarunoUmi', serif;
     font-size: small;
-
-
 }
 
 .bookRead {
     cursor: pointer;
 }
 
-
 .addBook {
     cursor: pointer;
 }
+
 .exit {
     position:relative;
     left:90%;
     margin-top:10px;
 }
 
-
-
 .shelfInfo {
-
-    
     display:flex;
     flex-direction: column;
     align-items: center;
     border-radius:20px;
-
-
 }
 
 .errorMessage {
@@ -198,19 +173,17 @@
 }
 
 input[type = "text"]{
-
     font-family: 'Kaisei HarunoUmi', serif;
 }
+
 input {
     outline:none;
 }
+
 .descriptionText {
     outline:none;
-
     font-family: 'Kaisei HarunoUmi', serif;
 }
-
-
 
 .descriptionTextHolder {
     background:white;
@@ -221,12 +194,10 @@ input {
 }
 
 .descriptionText {
-
     position:relative;
     resize:none;
     top:5%;
     left:6%;
-    
 }
 
 .titleText, .authorText, .pagesText {
@@ -237,7 +208,6 @@ input {
 }
 
 .readStats {
-
     width:100px;
     display:flex;
     justify-content:space-around;
@@ -254,11 +224,7 @@ input {
     margin-top:20px;
     border-radius: 20px;
     box-shadow: 1px 1px 8px rgb(127, 127, 127);
-;
-
 }
-
-
 
 .darkenPage {
     display:none;
@@ -278,7 +244,6 @@ input {
     .addBook {
         position:fixed;
         left:50%;
-
     }
   }
 
@@ -304,8 +269,8 @@ input {
   @media only screen and (max-width: 450px) {
     .addShelf {
         width:320px;
-
     }
+
     .addBook {
         left:70%;
     }
@@ -316,13 +281,7 @@ input {
         width:300px;
         left:3%;
         top:8%;
-
     }
-
-
-
-
-
 
     .addBook {
         width:50px;
@@ -331,6 +290,7 @@ input {
         left:76%;
         font-size: x-large;
     }
+
     .book {
         width: 200px;
         height:200px;
@@ -348,9 +308,11 @@ input {
     .author {
         font-size:0.75em;
     }
+
     .totalPages {
         font-size: 0.5em;
     }
+
     .hasRead {
         width:15px;
         height:15px;
@@ -365,6 +327,7 @@ input {
     .readStats {
         margin-right:50px;
     }
+
     .deleteBook, .editBook {
         width:15px;
         height:15px;
@@ -372,8 +335,6 @@ input {
 
     .bookTools {
         width:40px;
-        
-
     }
 
   }
@@ -383,22 +344,22 @@ input {
         width:200px;
         left:16%;
         top:10%;
-    
     }
+
     .descriptionTextHolder {
         width:200px;
-
     }
-    .descriptionText {
 
+    .descriptionText {
         width: 14em;
         height:13em;
         font-size: 12px;
-
     }
+
     .readStats {
         margin-right:205px;
     }
+
     .errorMessage {
         font-size: 9px;
     }
@@ -409,7 +370,6 @@ input {
     .addShelf {
         left:10%;
         top:10%;
-    
     }
 }
 
@@ -417,6 +377,5 @@ input {
     .addShelf {
         left:0%;
         top:10%;
-    
     }
 }
