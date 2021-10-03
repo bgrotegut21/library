@@ -1,3 +1,5 @@
+
+
 let darkenPage = document.querySelector(".darkenPage");
 let addShelf = document.querySelector(".addShelf");
 let bookShelf = document.querySelector(".bookShelf");
@@ -12,6 +14,7 @@ let exit = document.querySelector(".exit");
 let hasBookRead = document.querySelector(".hasRead");
 let errorMessage = document.querySelector(".errorMessage")
 
+
 let books = [];
 let editBook = {
     editMode: false,
@@ -19,97 +22,105 @@ let editBook = {
 }
 let bookHasBeenRead = false;
 
-function Book(title,author,description,totalPages,bookRead){
-    this.title = title;
-    this.author = author;
-    this.deleteBook = false;
-
-    this.description = description;
-    this.totalPages = totalPages;
-    this.bookRead = bookRead;
-    this.elements;
-    this.readElement;
-    this.trash;
-    this.edit;
-
-    this.titleElement;
-    this.authorElement;
-    this.descriptionElement;
-    this.pageElement;
-}
-
-Book.prototype.addElements = function(elements,readElement,trash,edit){
-    this.elements = elements;
-    this.readElement = readElement;
-    this.trash = trash;
-    this.edit = edit;
-    this.addKeyEvents(readElement,trash,edit)
-}
-
-Book.prototype.addTextElements = function(titleElement, authorElement,descriptionElement, pageElement){
-    this.titleElement = titleElement;
-    this.authorElement = authorElement;
-    this.descriptionElement = descriptionElement;
-    this.pageElement = pageElement;
-}
-
-Book.prototype.addKeyEvents = function (readElement,trash,edit){
-    readElement.addEventListener("click", () => {this.checkBookRead()});
-    trash.addEventListener("click", () => {this.trashBook()});
-    edit.addEventListener("click", () => {this.editBook()});
-}
-
-Book.prototype.trashBook = function (){
-    this.elements.remove();
-    this.deleteBook = true;
-    deleteBook();
-}
-
-Book.prototype.editBook = function () {
-    editBook.editMode = true;
-    editBook.book = this;
-    this.checkEditor()
-    envokeEditor();
-}
-
-Book.prototype.updateValues = function(title,author,description,pagesValue,bookRead){
-    this.title = title;
-    this.author = author; 
-    this.description = description; 
-    this.totalPages = pagesValue;
-    this.bookRead = bookRead;
-}
-
-Book.prototype.updateText = function (){
-    this.titleElement.textContent = this.title;
-    this.authorElement.textContent = this.author;
-    this.descriptionElement.textContent = this.description;
-    this.pageElement.textContent = this.totalPages;
-    this.updateBookRead();
-}
 
 
-Book.prototype.checkEditor = function () {
-    titleText.value = this.title;
-    authorText.value  = this.author.replace("by","").trim();
-    descriptionText.value = this.description;
-    pagesText.value = this.totalPages.match(/\d+/)[0];
-    assignBookRead(this.bookRead)
-}
 
-Book.prototype.updateBookRead = function(){
-    if (this.bookRead) this.readElement.setAttribute("src", "images/redTrue.svg");
-    else this.readElement.setAttribute("src", "images/redFalse.svg");
-}
+class Book{
+    constructor(title,author,description,totalPages,bookRead){
+        this.title = title;
+        this.author = author;
+        this.deleteBook = false;
+    
+        this.description = description;
+        this.totalPages = totalPages;
+        this.bookRead = bookRead;
+        this.elements;
+        this.readElement;
+        this.trash;
+        this.edit;
+    
+        this.titleElement;
+        this.authorElement;
+        this.descriptionElement;
+        this.pageElement;
+    }
 
-Book.prototype.checkBookRead = function(){
-    if (this.bookRead){
-        this.bookRead = false;
-        this.readElement.setAttribute("src", "images/redFalse.svg")
-    } else {
-        this.bookRead = true;
-        this.readElement.setAttribute("src","images/redTrue.svg")
-    } 
+    addElements(elements,readElement,trash,edit){
+        this.elements = elements;
+        this.readElement = readElement;
+        this.trash = trash;
+        this.edit = edit;
+        this.addKeyEvents(readElement,trash,edit)
+
+    }
+
+    addTextElements(titleElement, authorElement,descriptionElement, pageElement){
+        this.titleElement = titleElement;
+        this.authorElement = authorElement;
+        this.descriptionElement = descriptionElement;
+        this.pageElement = pageElement;
+    }
+
+    addKeyEvents(readElement,trash,edit){
+        readElement.addEventListener("click", () => {this.checkBookRead()});
+        trash.addEventListener("click", () => {this.trashBook()});
+        edit.addEventListener("click", () => {this.editBook()});
+
+    }
+
+    trashBook (){
+        this.elements.remove();
+        this.deleteBook = true;
+        deleteBook();
+
+    }
+
+    editBook (){
+        editBook.editMode = true;
+        editBook.book = this;
+        this.checkEditor()
+        envokeEditor();
+    }
+
+    updateValues(title,author,description,pagesValue,bookRead){
+        this.title = title;
+        this.author = author; 
+        this.description = description; 
+        this.totalPages = pagesValue;
+        this.bookRead = bookRead;
+    }
+
+    updateText(){
+        this.titleElement.textContent = this.title;
+        this.authorElement.textContent = this.author;
+        this.descriptionElement.textContent = this.description;
+        this.pageElement.textContent = this.totalPages;
+        this.updateBookRead();
+    }
+
+    checkEditor(){
+        titleText.value = this.title;
+        authorText.value  = this.author.replace("by","").trim();
+        descriptionText.value = this.description;
+        pagesText.value = this.totalPages.match(/\d+/)[0];
+        assignBookRead(this.bookRead)
+    }
+
+    updateBookRead(){
+        if (this.bookRead) this.readElement.setAttribute("src", "images/redTrue.svg");
+        else this.readElement.setAttribute("src", "images/redFalse.svg");
+    }
+
+    checkBookRead(){
+        if (this.bookRead){
+            this.bookRead = false;
+            this.readElement.setAttribute("src", "images/redFalse.svg")
+        } else {
+            this.bookRead = true;
+            this.readElement.setAttribute("src","images/redTrue.svg")
+        } 
+
+    }
 }
 
 
@@ -201,6 +212,14 @@ function displayErrorMessage(message){
     errorMessage.textContent = message;
 }
 
+function addBindings (){
+    bindings.forEach(binding => binding.button.addEventListener("click", button.func))
+
+}
+
+
+
+
 
 doneButton.addEventListener("click", () => {
     let titleValue = titleText.value;
@@ -228,13 +247,15 @@ doneButton.addEventListener("click", () => {
     if(!wordLength.bool) exitPage();
 
 })
+
+
 window.addEventListener("load", () => {retrieveData()})
 
 function storeData(group){
     let storageGroup = [];
     let bookObject = {};
 
-    group.map(book => {
+    group.forEach(book => {
         bookObject.title = book.title;
         bookObject.author = book.author;
         bookObject.description = book.description;
