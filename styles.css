@@ -1,381 +1,399 @@
 * {
-    border:0;
-    box-sizing: 0;
-    margin:0;
-    padding:0;
+  border: 0;
+  box-sizing: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
-    background:rgb(255, 255, 255);
-    display: flex;
-    height:60px;
-    justify-content: center;
-    box-shadow: 1px 1px 4px rgb(175, 175, 175);
-    margin-bottom: 20px;
-    font-family: cursive;
+  background: rgb(255, 255, 255);
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  box-shadow: 1px 1px 4px rgb(175, 175, 175);
+  margin-bottom: 20px;
+  font-family: cursive;
 }
 
 .libraryTitle {
-    margin-left: 6px;
+  margin-left: 6px;
 }
 
 .bookShelf {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.libraryIcons{
-    display: flex;
-    align-items: center;
+.libraryIcons {
+  display: flex;
+  align-items: center;
 }
-
 
 .doneButton:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .exit {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .book {
-    background:rgb(231, 228, 228);
-    border-radius:10px;
-    width:300px;
-    height:300px;
-    display:flex;
-    flex-direction:column;
-    box-shadow: 1px 1px 4px rgb(125, 124, 124);
-    margin-right:15px;
-    margin-bottom: 20px;
-    font-size: small;
-    font-family: 'Kaisei HarunoUmi', serif;    
+  background: rgb(231, 228, 228);
+  border-radius: 10px;
+  width: 300px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px 4px rgb(125, 124, 124);
+  margin-right: 15px;
+  margin-bottom: 20px;
+  font-size: small;
+  font-family: 'Kaisei HarunoUmi', serif;
 }
 
 .toolHolder {
-    display:flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.bookTools{
-    margin-right:5px;
-    width:75px;
-    display:flex;
-    justify-content: space-evenly;
+.bookTools {
+  margin-right: 5px;
+  width: 75px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .bookDescription {
-    word-wrap: break-word;
-    width:270px;
-    height:200px;
+  word-wrap: break-word;
+  width: 270px;
+  height: 220px;
 }
 
 .bookStatsHolder {
-    justify-content:flex-end;
-    display:flex;
+  justify-content: flex-end;
+  display: flex;
 }
 
 .bookStats {
-    flex-wrap: wrap;
-    display:flex;
-    justify-content: space-around;
-    width:175px;
-    margin-right: 5px;
-    margin-top:-5px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+  width: 175px;
+  margin-right: 5px;
+  margin-top: -5px;
 }
 
 .textHolder {
-    display:flex;
-    flex-direction:column;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .addBook {
-    background:rgb(83, 103, 239);
-    color:white;
-    width:100px;
-    height:100px;
-    position:fixed;
-    top:85%;
-    left:76%;
-    border-radius:50%;
-    line-height:100px;
-    text-align: center;
-    font-size:40px;
-    box-shadow: 1px 1px 8px rgb(96, 96, 96);
+  background: rgb(83, 103, 239);
+  color: white;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 85%;
+  left: 76%;
+  border-radius: 50%;
+  line-height: 100px;
+  text-align: center;
+  font-size: 40px;
+  box-shadow: 1px 1px 8px rgb(96, 96, 96);
 }
 
 .hasRead:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .bookTools img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
-
 .addShelf {
-    display:none;
-    background:rgb(219, 219, 219);
-    z-index: 100;
-    width:400px;
-    height:500px;
-    position:fixed;
-    top:20%;
-    border-radius: 20px;
-    left: 10%;
-    font-family: 'Kaisei HarunoUmi', serif;
-    font-size: small;
+  display: none;
+  background: rgb(219, 219, 219);
+  z-index: 100;
+  width: 400px;
+  height: 600px;
+  position: fixed;
+  top: 20%;
+  border-radius: 20px;
+  left: 10%;
+  font-family: 'Kaisei HarunoUmi', serif;
+  font-size: small;
 }
 
 .bookRead {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .addBook {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .exit {
-    position:relative;
-    left:90%;
-    margin-top:10px;
+  position: relative;
+  left: 90%;
+  margin-top: 10px;
 }
 
 .shelfInfo {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius:20px;
-}
-
-.errorMessage {
-    color:rgb(0, 18, 209);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
 }
 
 .shelfElements {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    width:350px;
-    height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  height: 550px;
 }
 
-.titleTextHolder, .authorTextHolder, .textPageHolder {
-    background:white;
-    height:30px;
-    width:200px;
-    border-radius: 20px;
-    box-shadow: 1px 1px 8px rgb(127, 127, 127);
+.titleTextHolder,
+.authorTextHolder,
+.textPageHolder {
+  background: white;
+  height: 30px;
+  width: 200px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 8px rgb(127, 127, 127);
 }
 
-input[type = "text"]{
-    font-family: 'Kaisei HarunoUmi', serif;
+input[type='text'] {
+  font-family: 'Kaisei HarunoUmi', serif;
 }
 
 input {
-    outline:none;
+  outline: none;
+}
+
+.error {
+  color: rgb(0, 18, 209);
 }
 
 .descriptionText {
-    outline:none;
-    font-family: 'Kaisei HarunoUmi', serif;
+  outline: none;
+  font-family: 'Kaisei HarunoUmi', serif;
 }
 
 .descriptionTextHolder {
-    background:white;
-    width:300px;
-    height:200px;
-    border-radius:20px;
-    box-shadow: 1px 1px 8px rgb(127, 127, 127);
+  background: white;
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 8px rgb(127, 127, 127);
 }
 
 .descriptionText {
-    position:relative;
-    resize:none;
-    top:5%;
-    left:6%;
+  position: relative;
+  resize: none;
+  top: 5%;
+  left: 6%;
 }
 
-.titleText, .authorText, .pagesText {
-    position:relative;
-    top:20%;
-    left:10%;
-    width:160px;
+.titleText,
+.authorText,
+.pagesText {
+  position: relative;
+  top: 20%;
+  left: 10%;
+  width: 160px;
 }
 
 .readStats {
-    width:100px;
-    display:flex;
-    justify-content:space-around;
-    position:relative;
-    top:1%;
-    left:30%;
+  width: 100px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  top: 1%;
+  left: 30%;
 }
 
 .doneButton {
-    background:rgb(83, 103, 239);
-    color:white;
-    width:100px;
-    height:30px;
-    margin-top:20px;
-    border-radius: 20px;
-    box-shadow: 1px 1px 8px rgb(127, 127, 127);
+  background: rgb(83, 103, 239);
+  color: white;
+  width: 100px;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 8px rgb(127, 127, 127);
 }
 
 .darkenPage {
-    display:none;
-    position: absolute;;
-    background: black;
-    z-index:90;
-    width:100%;
-    height:100%;
-    filter:alpha(opacity=60);
-	-moz-opacity: 0.6;
-	opacity: 0.6;
+  display: none;
+  position: absolute;
+  background: black;
+  z-index: 90;
+  width: 100%;
+  height: 100%;
+  filter: alpha(opacity=60);
+  -moz-opacity: 0.6;
+  opacity: 0.6;
 }
 
+.inputElement {
+  position: relative;
+  top: 0px;
+}
 
+.invalidHolder {
+  border: 3px solid rgb(0, 18, 209);
+}
 
 @media only screen and (min-width: 1100px) {
-    .addBook {
-        position:fixed;
-        left:50%;
-    }
+  .addBook {
+    position: fixed;
+    left: 50%;
   }
-
+}
 
 @media only screen and (min-width: 750px) {
-    .addShelf {
-        left:30%;
-    }
+  .addShelf {
+    left: 30%;
   }
-
-  @media only screen and (min-width: 1400px) {
-    .addShelf {
-        left:40%;
-    }
-  }
-
-  @media only screen and (min-width: 1400px) {
-    .addShelf {
-        left:40%;
-    }
-  }
-
-  @media only screen and (max-width: 450px) {
-    .addShelf {
-        width:320px;
-    }
-
-    .addBook {
-        left:70%;
-    }
-  }
-
-  @media only screen and (max-width: 360px) {
-    .addShelf {
-        width:300px;
-        left:3%;
-        top:8%;
-    }
-
-    .addBook {
-        width:50px;
-        height:50px;
-        line-height: 50px;
-        left:76%;
-        font-size: x-large;
-    }
-
-    .book {
-        width: 200px;
-        height:200px;
-    }
-
-    .bookTitle {
-        font-size: 1em;
-    }
-
-    .bookStats {
-        width: 110px;
-        align-items: center;
-    }
-
-    .author {
-        font-size:0.75em;
-    }
-
-    .totalPages {
-        font-size: 0.5em;
-    }
-
-    .hasRead {
-        width:15px;
-        height:15px;
-    }
-
-    .bookDescription {
-        width:180px;
-        height:120px;
-        font-size: 8px;
-    }
-
-    .readStats {
-        margin-right:50px;
-    }
-
-    .deleteBook, .editBook {
-        width:15px;
-        height:15px;
-    }
-
-    .bookTools {
-        width:40px;
-    }
-
-  }
-
-@media only screen and (max-width:315px){
-    .addShelf {
-        width:200px;
-        left:16%;
-        top:10%;
-    }
-
-    .descriptionTextHolder {
-        width:200px;
-    }
-
-    .descriptionText {
-        width: 14em;
-        height:13em;
-        font-size: 12px;
-    }
-
-    .readStats {
-        margin-right:205px;
-    }
-
-    .errorMessage {
-        font-size: 9px;
-    }
 }
 
-
-@media only screen and (max-width:300px){
-    .addShelf {
-        left:10%;
-        top:10%;
-    }
+@media only screen and (min-width: 1400px) {
+  .addShelf {
+    left: 40%;
+  }
 }
 
-@media only screen and (max-width:225px){
-    .addShelf {
-        left:0%;
-        top:10%;
-    }
+@media only screen and (min-width: 1400px) {
+  .addShelf {
+    left: 40%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .addShelf {
+    width: 320px;
+  }
+
+  .addBook {
+    left: 70%;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .addShelf {
+    width: 300px;
+    left: 3%;
+    top: 8%;
+  }
+
+  .addBook {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    left: 76%;
+    font-size: x-large;
+  }
+
+  .book {
+    width: 200px;
+    height: 200px;
+  }
+
+  .bookTitle {
+    font-size: 1em;
+  }
+
+  .bookStats {
+    width: 110px;
+    align-items: center;
+  }
+
+  .author {
+    font-size: 0.75em;
+  }
+
+  .totalPages {
+    font-size: 0.5em;
+  }
+
+  .hasRead {
+    width: 15px;
+    height: 15px;
+  }
+
+  .descriptionTextHolder {
+    width: 290px;
+  }
+
+  .descriptionText {
+    left: 10px;
+  }
+
+  .bookDescription {
+    width: 180px;
+    height: 120px;
+    font-size: 8px;
+  }
+
+  .readStats {
+    margin-right: 50px;
+  }
+
+  .deleteBook,
+  .editBook {
+    width: 15px;
+    height: 15px;
+  }
+
+  .bookTools {
+    width: 40px;
+  }
+}
+
+@media only screen and (max-width: 315px) {
+  .inputElement {
+    top: 1px;
+  }
+
+  .addShelf {
+    width: 220px;
+    left: 16%;
+    top: 10%;
+  }
+
+  .descriptionTextHolder {
+    width: 200px;
+  }
+
+  .descriptionText {
+    width: 14em;
+    height: 13em;
+    font-size: 12px;
+  }
+
+  .readStats {
+    margin-right: 205px;
+  }
+
+  .errorMessage {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .addShelf {
+    left: 10%;
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width: 225px) {
+  .addShelf {
+    left: 0%;
+    top: 10%;
+  }
 }

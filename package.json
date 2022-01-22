@@ -1,0 +1,22 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "\"a simple application to save the books that you have collected\"",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgrotegut21/library.git"
+  },
+  "keywords": [
+    "library"
+  ],
+  "author": "Brayden Grotegut <bgrotegut21@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgrotegut21/library/issues"
+  },
+  "homepage": "https://github.com/bgrotegut21/library#readme"
+}

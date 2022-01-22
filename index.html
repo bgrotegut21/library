@@ -1,58 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Kaushan+Script&display=swap');
-        </style>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class = "darkenPage"> this page will be darken</div>
-    <div class = "header">
-        <div class = "libraryIcons">
-            <img class = "libraryIcon" src="images/redTrue.svg" alt="Library Icon" width = "50" height = "50">
-            <h1 class = "libraryTitle">Library</h1>
-        </div>
-
+      @import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Kaushan+Script&display=swap');
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="darkenPage">this page will be darken</div>
+    <div class="header">
+      <div class="libraryIcons">
+        <img
+          class="libraryIcon"
+          src="images/redTrue.svg"
+          alt="Library Icon"
+          width="50"
+          height="50"
+        />
+        <h1 class="libraryTitle">Library</h1>
+      </div>
     </div>
-    <div class = "bookShelf"></div>
-    <div class = "addShelf">
-        <h2 class = "exit">X</h2>
-        <div class = "shelfInfo">
-            <div class = "shelfElements">
-                <h2 class = "title">Title</h2>
-                <div class = "titleTextHolder">
-                    <input class = "titleText" type="text">
-                </div>  
-                <h2 class = "authorEditorText">Author</h2>
-                <div class = "authorTextHolder">
-                    <input class = "authorText" type="text">
-                </div>
-                <h2 class = "description">Description</h2>
-                <div class = "descriptionTextHolder">
-                    <textarea class = "descriptionText" cols="36" rows="8"></textarea>
-                </div>
-                <h2 class = "totalPagesEditorText"> Total Pages</h2>
-                <div class = "textPageHolder">
-                    <input class = "pagesText" type="number">
-                </div>
-                <button class = "doneButton">Done</button>
-               <p class = "errorMessage"></p>
-                <div class = "readStats">
-                    <h2>read</h2>
-                    <img class = "bookRead" src="images/redFalse.svg" alt="user toggles read and false button" width ="30" height = "30">
-                </div>
-                <div class = "readBook">
-            </div>
-        </div>
-       </div>
-        </div>
-    <div class = "addBook">+</div>
-    <script src = "main.js"></script>
-</body>
+    <div class="bookShelf"></div>
 
+    <div class="addShelf">
+        <form novalidate>
+            <h2 class="exit">X</h2>
+            <div class="shelfInfo">
+              <div class="shelfElements">
+
+                <h2 class="title">Title</h2>
+                <p class = "titleErrorMessage error"> </p>
+
+                <div class="titleTextHolder holder">
+                  <input required class="titleText inputElement" type="text"  maxlength="26"/>
+                </div>
+                <h2 class="authorEditorText">Author</h2>
+                <p class = "authorErrorMessage error"></p>
+
+                <div class="authorTextHolder holder">
+                  <input required class="authorText inputElement" type="text"  maxlength = "22" />
+                </div>
+
+
+                <h2 class="description">Description</h2>
+                <p class = "descriptionErrorMessage error"></p>
+
+
+                <div class="descriptionTextHolder holder">
+                  <textarea required class="descriptionText inputElement" cols="36" rows="8" maxlength = "390"></textarea>
+                </div>
+
+
+                <h2 class="totalPagesEditorText">Total Pages</h2>
+                <p class = 'totalPagesErrorMessage error'></p>
+
+                
+                <div class="textPageHolder holder">
+                  <input type = 'number' required class="pagesText inputElement" min = '0' max = '999999' />
+                </div>
+                <button class="doneButton">Done</button>
+                <div class="readStats">
+                  <h2>read</h2>
+                  <img
+                    class="bookRead"
+                    src="images/redFalse.svg"
+                    alt="user toggles read and false button"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+                <div class="readBook"></div>
+              </div>
+
+
+        </form>
+
+      </div>
+    </div>
+    <div class="addBook">+</div>
+    <script src="main.js"></script>
+  </body>
 </html>
